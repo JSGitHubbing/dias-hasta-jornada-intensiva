@@ -7,15 +7,16 @@ body {
 }
 
 h1 {
-  font-size: min(10vw, 3rem);
+  font-size: min(20vw, 3rem);
   font-family: Arial, Helvetica, sans-serif;
   font-weight: normal;
+  padding-inline: 15px;
 }
 
 main {
   display: grid;
   justify-items: center;
-  font-size: min(10vw, 3rem);
+  font-size: min(20vw, 4rem);
   font-family: Arial, Helvetica, sans-serif;
   text-align: center;
   min-height: 100vh;
