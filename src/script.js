@@ -11,6 +11,7 @@ function onLoad() {
     var dias = calcularDias();
     var contador = document.getElementById("contador");
     contador.innerHTML = dias;
+    document.title += ' (' + dias + ')';
 
     texto.innerHTML = dias === 1 ? textoSingular : textoPlural;
   } else {
