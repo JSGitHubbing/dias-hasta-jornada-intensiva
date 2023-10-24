@@ -1,0 +1,66 @@
+body {
+  padding: 0;
+  margin: 0;
+  background-color: rgb(74, 130, 202);
+  color: rgb(216, 216, 216);
+  user-select: none;
+}
+
+h1 {
+  font-size: min(10vw, 3rem);
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: normal;
+}
+
+main {
+  display: grid;
+  justify-items: center;
+  font-size: min(10vw, 3rem);
+  font-family: Arial, Helvetica, sans-serif;
+  text-align: center;
+  min-height: 100vh;
+  align-items: center;
+  align-content: center;
+}
+
+.contador-container {
+  display: grid;
+}
+
+.contador-container div {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.contador-background {
+  padding: 2.5em;
+  border-radius: 50%;
+  border: 2px solid white;
+  margin: 0.5em;
+  aspect-ratio: 1;
+}
+
+.pulse {
+  animation-name: pulse;
+  animation-duration: 4s;
+  animation-iteration-count: infinite;
+}
+
+@keyframes pulse {
+  0% {
+    filter: blur(0.2px);
+  }
+  50% {
+    filter: blur(2px);
+  }
+  100% {
+    filter: blur(0.2px);
+  }
+}
+
+#contador {
+  display: grid;
+  font-weight: bold;
+  font-size: 2em;
+  place-items: center;
+}
