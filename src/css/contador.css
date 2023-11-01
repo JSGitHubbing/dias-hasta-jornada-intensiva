@@ -1,0 +1,23 @@
+.contador-container {
+  display: grid;
+}
+
+.contador-container div {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.contador-background {
+  padding: 2.5em;
+  border-radius: 50%;
+  border: 2px solid white;
+  margin: 0.5em;
+  aspect-ratio: 1;
+}
+
+#contador {
+  display: grid;
+  font-weight: bold;
+  font-size: 2em;
+  place-items: center;
+}
