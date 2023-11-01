@@ -1,8 +1,13 @@
+:root {
+  --primary-color: rgb(27, 91, 172);
+  --primary-text-color: rgb(216, 216, 216)
+}
+
 body {
   padding: 0;
   margin: 0;
-  background-color: rgb(74, 130, 202);
-  color: rgb(216, 216, 216);
+  background-color: var(--primary-color);
+  color: var(--primary-text-color);
   user-select: none;
 }
 
@@ -24,44 +29,8 @@ main {
   align-content: center;
 }
 
-.contador-container {
-  display: grid;
-}
-
-.contador-container div {
-  grid-column: 1;
-  grid-row: 1;
-}
-
-.contador-background {
-  padding: 2.5em;
-  border-radius: 50%;
-  border: 2px solid white;
-  margin: 0.5em;
-  aspect-ratio: 1;
-}
-
-.pulse {
-  animation-name: pulse;
-  animation-duration: 4s;
-  animation-iteration-count: infinite;
-}
-
-@keyframes pulse {
-  0% {
-    filter: blur(0.2px);
-  }
-  50% {
-    filter: blur(2px);
-  }
-  100% {
-    filter: blur(0.2px);
-  }
-}
-
-#contador {
-  display: grid;
-  font-weight: bold;
-  font-size: 2em;
-  place-items: center;
+nav {
+  position: absolute;
+  right: 1rem;
+  top: 1rem;
 }
