@@ -5,13 +5,39 @@ var textoPlural = "Tardes hasta jornada intensiva";
 var textoSingular = "Tarde hasta jornada intensiva";
 var textoIntensiva = "¡Estamos de jornada intensiva!";
 
+var hoy = new Date();
+var inicioIntensiva = null;
+var finIntensiva = null;
+
+var startDateTag = "startDate";
+var endDateTag = "endDate";
+
 function onLoad() {
   texto = document.getElementById("texto-dias");
+
+  inicioIntensiva = new Date(localStorage.getItem(startDateTag));
+  finIntensiva = new Date(localStorage.getItem(endDateTag));
+
+  if (!inicioIntensiva || !finIntensiva) {
+    toggleDialog();
+  } else {
+    var startDateInput = document.getElementById("startDateInput");
+    startDateInput.value = inicioIntensiva.toISOString().split("T")[0];
+    var endDateInput = document.getElementById("endDateInput");
+    endDateInput.value = finIntensiva.toISOString().split("T")[0];
+    setup();
+  }
+}
+
+function setup() {
   if (!esIntensiva()) {
+    if (hoy > inicioIntensiva) {
+      inicioIntensiva.setFullYear(hoy.getFullYear() + 1);
+    }
     var dias = calcularDias();
     var contador = document.getElementById("contador");
     contador.innerHTML = dias;
-    document.title += ' (' + dias + ')';
+    document.title += " (" + dias + ")";
 
     texto.innerHTML = dias === 1 ? textoSingular : textoPlural;
   } else {
@@ -19,6 +45,21 @@ function onLoad() {
     container.style.display = "none";
     texto.innerHTML = textoIntensiva;
   }
+}
+
+function recalcularDias() {
+  toggleDialog();
+  setup();
+}
+
+function setStartDate(input) {
+  inicioIntensiva = new Date(input.value);
+  localStorage.setItem(startDateTag, inicioIntensiva);
+}
+
+function setEndDate(input) {
+  finIntensiva = new Date(input.value);
+  localStorage.setItem(endDateTag, finIntensiva);
 }
 
 function esFestivo(fecha) {
@@ -47,30 +88,23 @@ function viernesSanto(fecha) {
 }
 
 function calcularDias() {
-  var hoy = new Date();
-
-  var siguienteJornadaIntensiva = new Date(hoy.getFullYear(), 6, 1);
-  if (hoy > siguienteJornadaIntensiva) {
-    siguienteJornadaIntensiva.setFullYear(hoy.getFullYear() + 1);
-  }
-
   var dias = 0;
-  while (hoy < siguienteJornadaIntensiva) {
-    if (hoy.getDay() >= 1 && hoy.getDay() <= 4 && !esFestivo(hoy)) {
+  var fechaAcumulada = new Date();
+  while (fechaAcumulada < inicioIntensiva) {
+    if (
+      fechaAcumulada.getDay() >= 1 &&
+      fechaAcumulada.getDay() <= 4 &&
+      !esFestivo(fechaAcumulada)
+    ) {
       dias++;
     }
 
-    hoy.setDate(hoy.getDate() + 1);
+    fechaAcumulada.setDate(fechaAcumulada.getDate() + 1);
   }
 
   return dias;
 }
 
 function esIntensiva() {
-  var hoy = new Date();
-
-  var inicioIntensiva = new Date(hoy.getFullYear(), 6, 1);
-  var finIntensiva = new Date(hoy.getFullYear(), 8, 15);
-
   return hoy >= inicioIntensiva && hoy < finIntensiva;
 }

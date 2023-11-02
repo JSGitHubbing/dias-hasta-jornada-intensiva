@@ -1,6 +1,6 @@
 :root {
-  --primary-color: rgb(27, 91, 172);
-  --primary-text-color: rgb(216, 216, 216)
+  --primary-color: #1b5bac;
+  --primary-text-color: #d8d8d8;
 }
 
 body {
@@ -9,12 +9,12 @@ body {
   background-color: var(--primary-color);
   color: var(--primary-text-color);
   user-select: none;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: normal;
 }
 
 h1 {
   font-size: min(20vw, 3rem);
-  font-family: Arial, Helvetica, sans-serif;
-  font-weight: normal;
   padding-inline: 15px;
 }
 
@@ -33,4 +33,81 @@ nav {
   position: absolute;
   right: 1rem;
   top: 1rem;
+}
+
+.clickable {
+  cursor: pointer;
+}
+
+.clickable:hover {
+  opacity: .8;
+}
+
+.clickable:active 
+{
+  opacity: .6;
+}
+
+.card {
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px,
+    rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
+}
+
+
+.icon-button {
+  width: 32px;
+  aspect-ratio: 1;
+  padding: 0;
+  margin: 0;
+}
+
+
+.background-shadow {
+  background-color: black;
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: .3;
+}
+
+#dialog {
+  visibility: hidden;
+}
+
+.dialog {
+  max-width: 640px;
+  background-color: white;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding-inline: 42px;
+  padding-block: 2rem;
+  color: black;
+  display: grid;
+  gap: 1rem;
+}
+
+.dialog h1 {
+  font-size: 1.5rem;
+  padding: 0;
+  margin: 0;
+}
+
+.input-group {
+  display: grid;
+  gap: .2rem;
+}
+
+.dialog-button {
+  justify-self: end;
+  padding: .5rem;
+  background-color: #eeb20d;
+  border: none;
+  border-radius: 5px;
 }
