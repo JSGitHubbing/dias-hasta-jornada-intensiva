@@ -3,23 +3,56 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Contador que muestra cuántas tardes quedan hasta la jornada intensiva"/>
+    <meta
+      name="description"
+      content="Contador que muestra cuántas tardes quedan hasta la jornada intensiva"
+    />
     <script src="./script.js"></script>
-    <link rel="stylesheet" href="styles.css" />
-    <link rel="stylesheet" href="css/animations.css" />
-    <link rel="stylesheet" href="css/contador.css" />
-    <link rel="icon" type="image/x-icon" href="resources/favicon.ico">
+    <script src="scripts/dialog.js"></script>
+
+
+    <link rel="preload" href="css/animations.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="css/animations.css"></noscript>
+
+    <link rel="preload" href="css/animations.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="css/animations.css"></noscript>
+
+    <link rel="preload" href="css/contador.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="css/contador.css"></noscript>
+
+    <link rel="preload" href="styles.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="styles.css"></noscript>
+
+    <link rel="icon" type="image/x-icon" href="resources/favicon.ico" />
     <title>Jornada Intensiva</title>
   </head>
 
   <body onload="onLoad()">
+    <nav>
+        <img class="icon-button  clickable" onclick="toggleDialog()" src="resources/gear.svg" aria-hidden="true">
+    </nav>
     <main>
       <div id="contador-container" class="contador-container">
         <div class="contador-background pulse"></div>
         <div class="contador-background"></div>
-        <div id="contador"></div>
+        <div id="contador">&nbsp;</div>
       </div>
-      <h1 id="texto-dias"></h1>
+      <h1 id="texto-dias">&nbsp;</h1>
     </main>
+    <div id="dialog">
+      <div class="background-shadow" onclick="toggleDialog()"></div>
+      <div class="dialog card">
+        <h1>Selecciona el rango de fechas</h1>
+        <div class="input-group">
+          <label for="startDateInput">Fecha de inicio de jornada intensiva</label>
+          <input id="startDateInput" type="date" onchange="setStartDate(this)">
+        </div>
+        <div class="input-group">
+          <label for="endDateInput">Fecha de fin de jornada intensiva</label>
+          <input id="endDateInput" type="date" onchange="setEndDate(this)">
+        </div>
+        <button class="dialog-button clickable" onclick="recalcularDias()">Confirmar</button>
+      </div>
+    </div>
   </body>
 </html>
