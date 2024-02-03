@@ -37,7 +37,7 @@ function setup() {
     var dias = calcularDias();
     var contador = document.getElementById("contador");
     contador.innerHTML = dias;
-    document.title += " (" + dias + ")";
+    document.title = "Jornada Intensiva (" + dias + ")";
 
     texto.innerHTML = dias === 1 ? textoSingular : textoPlural;
   } else {
