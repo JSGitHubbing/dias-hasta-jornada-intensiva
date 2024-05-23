@@ -1,13 +1,13 @@
-.contador-container {
+.counter-container {
   display: grid;
 }
 
-.contador-container div {
+.counter-container div {
   grid-column: 1;
   grid-row: 1;
 }
 
-.contador-background {
+.counter-background {
   padding: 2.5em;
   border-radius: 50%;
   border: 2px solid white;
@@ -15,7 +15,7 @@
   aspect-ratio: 1;
 }
 
-#contador {
+#counter {
   display: grid;
   font-weight: bold;
   font-size: 2em;
