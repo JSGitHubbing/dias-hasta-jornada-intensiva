@@ -2,6 +2,7 @@ import {
   START_DATE_TAG,
   END_DATE_TAG,
   INVALID_DATE_ERROR,
+  CALCULATION_CONFIG_TAG,
 } from "./constants.js";
 import { CALCULATION_CONFIGS } from "./configurations/work-day-config.js";
 
@@ -15,7 +16,7 @@ export class DayCalculator {
   }
 
   constructor() {
-    this.currentConfig = 0;
+    this.currentConfig = localStorage.getItem(CALCULATION_CONFIG_TAG) ?? 0;
     this.startDate = null;
     this.endDate = null;
     this.needsDateInput = true;
@@ -95,5 +96,6 @@ export class DayCalculator {
 
   setCalculationConfig(value) {
     this.currentConfig = value;
+    localStorage.setItem(CALCULATION_CONFIG_TAG, value);
   }
 }
