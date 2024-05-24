@@ -7,41 +7,48 @@
       name="description"
       content="Contador que muestra cuántas tardes quedan hasta la jornada intensiva"
     />
-    <script src="./script.js"></script>
-    <script src="scripts/dialog.js"></script>
+    <script type="module" src="./script.js"></script>
     <link rel="stylesheet" href="css/animations.css">
-    <link rel="stylesheet" href="css/contador.css">
+    <link rel="stylesheet" href="css/counter.css">
     <link rel="stylesheet" href="styles.css">
 
     <link rel="icon" type="image/x-icon" href="resources/favicon.ico" />
     <title>Jornada Intensiva</title>
   </head>
 
-  <body onload="onLoad()">
+  <body>
     <nav>
-        <img class="icon-button  clickable" onclick="toggleDialog()" src="resources/gear.svg" aria-hidden="true">
+        <img id="config-button" class="icon-button clickable" src="resources/gear.svg" aria-hidden="true">
     </nav>
     <main>
-      <div id="contador-container" class="contador-container">
-        <div class="contador-background pulse"></div>
-        <div class="contador-background"></div>
-        <div id="contador">&nbsp;</div>
+      <div id="counter-container" class="counter-container">
+        <div class="counter-background pulse"></div>
+        <div class="counter-background"></div>
+        <div id="counter">&nbsp;</div>
       </div>
       <h1 id="texto-dias">&nbsp;</h1>
     </main>
     <div id="dialog">
-      <div class="background-shadow" onclick="toggleDialog()"></div>
+      <div id="config-dialog-backdrop" class="background-shadow"></div>
       <div class="dialog card">
         <h1>Selecciona el rango de fechas</h1>
         <div class="input-group">
-          <label for="startDateInput">Fecha de inicio de jornada intensiva</label>
-          <input id="startDateInput" type="date" onchange="setStartDate(this)">
+          <label for="config-dialog-start-date-input">Fecha de inicio de jornada intensiva</label>
+          <input id="config-dialog-start-date-input" type="date">
         </div>
         <div class="input-group">
-          <label for="endDateInput">Fecha de fin de jornada intensiva</label>
-          <input id="endDateInput" type="date" onchange="setEndDate(this)">
+          <label for="config-dialog-end-date-input">Fecha de fin de jornada intensiva</label>
+          <input id="config-dialog-end-date-input" type="date">
         </div>
-        <button class="dialog-button clickable" onclick="recalcularDias()">Confirmar</button>
+        <div class="input-group">
+          <label for="config-dialog-calculation-config">Tipo de cálculo</label>
+          <select name="config-dialog-calculation-config" id="config-dialog-calculation-config">
+            <option value="0">Días naturales</option>
+            <option value="1">Días laborables</option>
+            <option value="2">Tardes laborables</option>
+          </select>
+        </div>
+        <button id="config-dialog-confirm-button" class="dialog-button clickable">Confirmar</button>
       </div>
     </div>
   </body>
